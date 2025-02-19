@@ -21,8 +21,8 @@ done
 To use your own virtualenv, without uv, run:
 
 ```bash
-python -m venv venv
-source venv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 for proj in nanoeval alcatraz nanoeval_alcatraz; do
   pip install -e project/"$proj"
@@ -50,7 +50,7 @@ docker buildx build \
   -f Dockerfile_x86 \
   --platform linux/amd64 \
   --ssh default=$SSH_AUTH_SOCK \
-  -t swelancer_x86 \
+  -t swelancer \
   .
 ```
 
@@ -75,7 +75,7 @@ Create a new file named `.env` and copy the contents from `sample.env`.
 You are now ready to run the eval with:
 
 ```bash
-python run_swelancer.py
+uv run python run_swelancer.py
 ```
 
 You should immediately see logging output as the container gets set up and the tasks are loaded, which may take several minutes. You can adjust the model, concurrency, recording, and other parameters in `run_swelancer.py`.

@@ -1,3 +1,4 @@
+import os
 from abc import ABC, abstractmethod
 from contextlib import asynccontextmanager
 from typing import Any, AsyncGenerator, Literal, cast
@@ -20,7 +21,7 @@ from nanoeval.solvers.computer_tasks.code_execution_interface import (
 from nanoeval_alcatraz.task_to_alcatraz_config import task_to_alcatraz_config
 
 logger = structlog.stdlib.get_logger(component=__name__)
-
+ALCATRAZ_TIMEOUT = int(os.getenv("ALCATRAZ_TIMEOUT", 120))
 
 class Python3ExceptionDict(BaseModel):
     """A pydantic model for serializing a Python 3.x exception.
@@ -65,7 +66,7 @@ class BaseAlcatrazComputerInterface(JupyterComputerInterface, ABC):
         await self.cluster._stop()
 
     @override
-    async def execute(self, code: str, timeout: int = 120) -> JupyterExecutionResult:
+    async def execute(self, code: str, timeout: int = ALCATRAZ_TIMEOUT) -> JupyterExecutionResult:
         await self._start_cluster_once()
 
         messages = await self.cluster.send_kernel_command(code, timeout=timeout)
