@@ -15,7 +15,6 @@ from email.header import decode_header
 from datetime import datetime, timezone
 
 EMAIL_USERNAME = "aliceoglualice@gmail.com"
-EMAIL_PASSWORD = "cfpy ofxm lcmq aeta"
 
 
 def get_magic_code(user_email, password, since=None, retries=5, delay=10):
