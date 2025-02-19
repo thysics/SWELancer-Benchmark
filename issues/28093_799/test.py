@@ -19,7 +19,6 @@ from playwright._impl._page import Page
 NEWDOT_URL = "https://dev.new.expensify.com:8082/"
 OLDDOT_URL = "http://localhost:9000/"
 EMAIL = "ikhanle001+23@gmail.com"
-PASSWORD = "dzcr knad otxp bsuz"
 
 class IMAPOTPExtractor:
     def __init__(self, email_address, password):
@@ -94,11 +93,6 @@ class IMAPOTPExtractor:
     def _extract_otp(self, text):
         match = re.search(r"\b\d{6}\b", text)
         return match.group(0) if match else None
-
-
-gmail_account_helper = IMAPOTPExtractor(EMAIL, PASSWORD)
-
-
 
 def login_user(p: PlaywrightContextManager, first_name="Milan", last_name="T") -> tuple[Browser, Page, str]:
 

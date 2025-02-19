@@ -16,7 +16,6 @@ from utils.trace_cleaner import trace_cleaner  # <--- Added import
 NEWDOT_URL = "https://dev.new.expensify.com:8082/"
 OLDDOT_URL = "http://localhost:9000/"
 EMAIL = "ikhanle001+23@gmail.com"
-PASSWORD = "dzcr knad otxp bsuz"
 
 class IMAPOTPExtractor:
     def __init__(self, email_address, password):
@@ -91,9 +90,6 @@ class IMAPOTPExtractor:
     def _extract_otp(self, text):
         match = re.search(r"\b\d{6}\b", text)
         return match.group(0) if match else None
-
-
-gmail_account_helper = IMAPOTPExtractor(EMAIL, PASSWORD)
 
 
 @pytest.fixture
