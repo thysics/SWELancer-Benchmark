@@ -16,13 +16,13 @@
     
     - name: Read the patch file content
       slurp:
-        src: "/app/tests/issues/{{ lookup('env', 'ISSUE_ID') }}/bug_reintroduce.patch"
+        src: "/app/tests/issues/{{ lookup('env', 'ISSUE_ID') }}/issue_introduction.patch"
       register: patch_content
     
     - name: Apply the patch file if not empty
       shell: |
         ISSUE_ID={{ lookup('env', 'ISSUE_ID') }}
-        patch -p1 < /app/tests/issues/$ISSUE_ID/bug_reintroduce.patch
+        patch -p1 < /app/tests/issues/$ISSUE_ID/issue_introduction.patch
       args:
         chdir: /app/expensify
       ignore_errors: yes
