@@ -22,7 +22,7 @@ To use your own virtualenv, without uv, run:
 
 ```bash
 python -m venv .venv
-source venv/bin/activate
+source .venv/bin/activate
 pip install -r requirements.txt
 for proj in nanoeval alcatraz nanoeval_alcatraz; do
   pip install -e project/"$proj"

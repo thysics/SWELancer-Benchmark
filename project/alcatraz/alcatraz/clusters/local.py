@@ -70,6 +70,8 @@ _WAIT_FOR_TIMEOUT_INTERRUPT = 10
 # Do not use dynamic ports here (32_768-65_535) because they are not guaranteed to be open on Linux.
 _FREE_PORTS: set[int] = set(range(*map(int, os.getenv("FREE_PORTS", "10000-32767").split("-"))))
 
+ALCATRAZ_TIMEOUT = int(os.getenv("ALCATRAZ_TIMEOUT", 60))
+
 VS_CODE_PORT = 8000
 
 
@@ -915,7 +917,7 @@ class BaseAlcatrazCluster(ABC):
 
         self._exit_stack.callback(asyncio.create_task(self._jupyter_start_kernel()).cancel)
 
-        async with asyncio.timeout(60):
+        async with asyncio.timeout(ALCATRAZ_TIMEOUT):
             # Poll in runtime_dir until we find the connection file path.
             while True:
                 connection_files = await self._jupyter_list_connection_files()
@@ -1130,7 +1132,7 @@ class BaseAlcatrazCluster(ABC):
 
         self._exit_stack.push_async_callback(cleanup)
 
-        await self._kernel.wait_for_ready(timeout=60.0)
+        await self._kernel.wait_for_ready(timeout=ALCATRAZ_TIMEOUT)
         assert await self.kernel_is_alive()
         logger.info("Kernel is alive!")
 
