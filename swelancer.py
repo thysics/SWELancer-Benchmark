@@ -125,7 +125,7 @@ class SWELancerTask(ComputerTask):
         await computer.check_shell_command("git init")
         await computer.send_shell_command("find / -type f -name '*.orig' -delete")
 
-        # Creat a temp commit to mark where the model's changes begin
+        # Create a temp commit to mark where the model's changes begin
         if self.variant == "ic_swe":
             await computer.check_shell_command("bash -c 'git add .'")
             await computer.check_shell_command(
