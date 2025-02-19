@@ -8,7 +8,6 @@ from swelancer import SWELancerEval
 import argparse
 import nanoeval
 from nanoeval.evaluation import EvalSpec, RunnerArgs
-from nanoeval.examples._gpqa import GPQAEval
 from nanoeval.recorder import dummy_recorder
 from nanoeval.setup import nanoeval_entrypoint
 from swelancer_agent import SimpleAgentSolver
