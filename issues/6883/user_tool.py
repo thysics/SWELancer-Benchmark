@@ -13,9 +13,6 @@ import random
 from utils.trace_cleaner import trace_cleaner
 
 user_email = "totherandomuser+005@gmail.com"
-password = "umei djwi bfmp jntm"
-EMAIL = "totherandomuser+005@gmail.com"
-PASSWORD = "umei djwi bfmp jntm"
 NEWDOT_URL = "https://dev.new.expensify.com:8082"
 
 def new_dot_login(page, email):
