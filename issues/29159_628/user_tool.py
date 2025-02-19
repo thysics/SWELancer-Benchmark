@@ -17,8 +17,6 @@ from datetime import datetime, timezone
 from utils.trace_cleaner import trace_cleaner
 
 EMAIL_USERNAME = "aliceoglualice@gmail.com"
-EMAIL_PASSWORD = "cfpy ofxm lcmq aeta"
-
 
 def get_magic_code(user_email, password, since=None, retries=5, delay=10):
 
@@ -111,7 +109,7 @@ def login_user_if_not_logged_in(
         page.get_by_test_id("SignInPage").get_by_role("button", name="Join").click()
     else:
 
-        otp_code = "123456"  # get_magic_code(EMAIL_USERNAME, EMAIL_PASSWORD)
+        otp_code = "123456"
         otp_input = page.locator('input[autocomplete="one-time-code"]')
         otp_input.fill(otp_code)
 

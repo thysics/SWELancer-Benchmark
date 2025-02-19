@@ -15,7 +15,6 @@ from email.header import decode_header
 from datetime import datetime, timezone
 
 EMAIL_USERNAME = "aliceoglualice@gmail.com"
-EMAIL_PASSWORD = "cfpy ofxm lcmq aeta"
 
 EMAIL_USERNAME_POSTFIX = "29900.178212611614"
 
