@@ -17,7 +17,6 @@ from datetime import datetime, timezone
 from utils.trace_cleaner import trace_cleaner
 
 EMAIL_USERNAME = "aliceoglualice@gmail.com"
-EMAIL_PASSWORD = "cfpy ofxm lcmq aeta"
 
 EMAIL_USERNAME_POSTFIX = "29900.178212611614"
 
@@ -109,9 +108,7 @@ def login_user(p: PlaywrightContextManager, first_name, last_name, user_id) -> t
 
         page.get_by_test_id("SignInPage").get_by_role("button", name="Join").click()
     else:
-
-        otp_code = get_magic_code(EMAIL_USERNAME, EMAIL_PASSWORD)
-        page.get_by_test_id("SignInPage").get_by_test_id("validateCode").fill(otp_code)
+        page.get_by_test_id("SignInPage").get_by_test_id("validateCode").fill("123456")
         try:
             page.get_by_test_id("SignInPage").get_by_role("button", name="Sign in").click(timeout=2000)
         except (AssertionError, TimeoutError):
