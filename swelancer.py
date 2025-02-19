@@ -285,7 +285,7 @@ class SWELancerTask(ComputerTask):
 @chz.chz
 class SWELancerEval(PythonCodingEval):
     split: SWELancerSplit = "Diamond-$500k"
-    taskset: list[str] = field(default_factory=list)
+    taskset: list[str] | None = None
 
     @override
     def get_name(self) -> str:

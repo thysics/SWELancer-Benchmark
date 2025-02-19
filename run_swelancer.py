@@ -19,7 +19,7 @@ def parse_args():
 
 async def main() -> None:
     args = parse_args()
-    taskset = args.issue_ids if args.issue_ids else ["28250_990","45771_18"]
+    taskset = args.issue_ids if args.issue_ids else None
 
     report = await nanoeval.run(
         EvalSpec(
