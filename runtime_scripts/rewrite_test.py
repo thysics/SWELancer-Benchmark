@@ -73,7 +73,7 @@ class ModifyChromiumLaunchArgs(cst.CSTTransformer):
                         equal=cst.MaybeSentinel.DEFAULT,
                         comma=cst.MaybeSentinel.DEFAULT,
                     ),
-                    cst.Arg(keyword=cst.Name("headless"), value=cst.Name("False")),
+                    cst.Arg(keyword=cst.Name("headless"), value=cst.Name("True")),
                     cst.Arg(
                         keyword=cst.Name(value="args"),
                         value=cst.List(
